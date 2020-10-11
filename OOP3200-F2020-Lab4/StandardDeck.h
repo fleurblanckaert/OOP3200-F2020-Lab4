@@ -1,3 +1,10 @@
+/* Name: Fleur Blanckaert (100747083), Gabriel Dietrich (100764733)
+   Date: Oct 11 2020
+   Program: OOP 3200 - Lab 4 - Collections
+   Description: This header file created a class called StandardDeck
+				which represents a deck with 52 cards
+*/
+
 /** OOP3200. F2020. StandardDeck.h
  *
  *  In this lab you will create your own collection class called StandardDeck, which
@@ -23,7 +30,6 @@ class StandardDeck
 {
 public:
 	// Initialization:
-
 	//Default constructor
 	StandardDeck();
 
