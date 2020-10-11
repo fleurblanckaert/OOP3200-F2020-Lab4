@@ -22,11 +22,13 @@ class PlayingCard
 	/************************************************************************************
 		 *	Static arrays of strings to represent the ranks and suits
 		 ************************************************************************************/
+//Added public to make playing card accessible
+public:
 	static const std::string CARD_RANK[]; // an array that holds the names of the ranks								
 	static const std::string CARD_SUIT[]; // an array that holds the names of the suits
 	static const int RANKS; // the number of ranks
 	static const int SUITS; // the number of suits
-
+	
 	// by default, the card is a face up Ace of Hearts with a value of 1
 	PlayingCard();
 
