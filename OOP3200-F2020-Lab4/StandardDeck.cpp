@@ -9,7 +9,11 @@
 
 #include "StandardDeck.h"
 //#include "PlayingCard.h"
+#include <algorithm>
+#include <ctime>
 #include <iostream>
+
+
 
 //Sets member from PlayingCard pointer to 0
 StandardDeck::StandardDeck() :ptr(NULL)
@@ -40,7 +44,7 @@ void StandardDeck::Initialize()
 	}
 
 
-	//Loop to display every card of the deck in sensible order
+	//Loop to create a unique deck of cards
 	for (int suit = 0; suit < PlayingCard::SUITS; suit++)
 	{
 		for (int rank = 1; rank <= PlayingCard::RANKS; rank++)
@@ -73,6 +77,7 @@ StandardDeck& StandardDeck::operator=(std::vector<PlayingCard> & other_deck)
 	return(*this);
 }
 
+
 int StandardDeck::CardsRemaining()
 {
 	//Returns the size of the cards vector
@@ -83,49 +88,33 @@ int StandardDeck::CardsRemaining()
 void StandardDeck::DrawNextCard()
 {
 	// Draws next card on deck and removes it
-	std_deck[0];
-	std_deck.erase(std_deck.begin() + 0);
-
-	std::cout << std_deck[0].GetRank() << " of " << std_deck[0].GetSuit();
+	std_deck[1];
+	std::cout << std_deck[1].GetRank() << " of " << std_deck[1].GetSuit();
+	std_deck.erase(std_deck.begin() + 1);
 }
 
 void StandardDeck::DrawRandomCard()
 {
 	// Draws random card from deck and removes it
-	int num = rand() % std_deck.size();
-	std_deck[num];
-	std_deck.erase(std_deck.begin() + num);
-
-	std::cout << std_deck[num].GetRank() << " of " << std_deck[num].GetSuit();
+	int num1 = rand() % std_deck.size();
+	std_deck[num1];
+	std::cout << std_deck[num1].GetRank() << " of " << std_deck[num1].GetSuit();
+	std_deck.erase(std_deck.begin() + num1);
 
 }
 
 void StandardDeck::Shuffle()
 {
-	DrawRandomCard();
-	int num = rand() % std_deck.size();
-	std::string removeRank = std_deck[num].GetRank();
-	std::string removeSuit = std_deck[num].GetSuit();
+	srand(time(nullptr));
 
-	// Keeps drawing random cards from deck until there are no more cards
-	for (int i = 0; i < CardsRemaining(); i++)
+	bool isDuplicate = true;
+
+	for (int i = 0; i < CardsRemaining(); i++) 
 	{
-		int num = rand() % std_deck.size();
+			std::random_shuffle(std_deck.begin(), std_deck.end());
+		
+			std::cout << std_deck[i].GetRank() << " of " << std_deck[i].GetSuit() << " | ";
 
-		// Removes two of spades since it was already drawn
-		if (std_deck[num].GetRank() == "Two" && std_deck[num].GetSuit() == "Spades")
-		{
-			i--;
-			std_deck.erase(std_deck.begin() + num);
-		}
-
-		// Removes random card
-		if (std_deck[num].GetRank() == removeRank && std_deck[num].GetSuit() == removeSuit)
-		{
-			i--;
-			std_deck.erase(std_deck.begin() + num);
-		}
-
-		std::cout << std_deck[num].GetRank() << " of " << std_deck[num].GetSuit() << " | ";
 	}
 }
+

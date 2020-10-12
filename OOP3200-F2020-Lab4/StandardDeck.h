@@ -41,6 +41,7 @@ public:
 	StandardDeck(std::vector<PlayingCard>& other_deck); //Copy Constructor
 	StandardDeck& operator=(std::vector<PlayingCard>& other_deck); //Assignment operator
 
+
 	// Accessors:
 	int CardsRemaining();
 
@@ -48,6 +49,7 @@ public:
 	void DrawNextCard();
 	void DrawRandomCard();
 	void Shuffle();
+
 
 private:
 	std::vector<PlayingCard> std_deck;

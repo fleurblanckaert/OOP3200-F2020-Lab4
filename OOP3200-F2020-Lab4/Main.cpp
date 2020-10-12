@@ -52,7 +52,7 @@ int main()
 	std::cout << standardDeck.CardsRemaining();
 	std::cout << " cards remaining." << std::endl;
 	Pause();
-
+	
 	//// Shuffle the deck and show the result
 	std::cout << std::endl << "The remaining cards of the deck have been shuffled:\n" << std::endl;
 	standardDeck.Shuffle();
@@ -69,8 +69,8 @@ int main()
 	std::cout << std::endl << "The deck now has " << standardDeck.CardsRemaining();
 	std::cout << " cards" << std::endl;
 	Pause();
-
 	standardDeck.~StandardDeck();
+	
 
 }
 
